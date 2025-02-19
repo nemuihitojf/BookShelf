@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "bookshelf"
+version = "0.1.1"
+description = ""
+authors = ["hamashousf <53655592+hamashousf@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ja" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="modal d-block" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <div class="hstack gap-2">
+                      <label class="col-form-label-sm">ISBN</label>
+                      <div class="input-group input-group-sm">
+                        <input class="form-control text-center" id="IsbnGs1" maxlength="3" pattern="\d{3}" placeholder="000" type="text" value="978" required style="flex: 2;">
+                        <span class="input-group-text">-</span>
+                        <input class="form-control text-center" id="IsbnRegistrationGroup" maxlength="5" pattern="\d{5}" placeholder="000" type="text" required style="flex: 3;">
+                        <span class="input-group-text">-</span>
+                        <input class="form-control text-center" id="IsbnRegistrant" maxlength="7" pattern="\d{7}" placeholder="000" type="text" required style="flex: 3;">
+                        <span class="input-group-text">-</span>
+                        <input class="form-control text-center" id="IsbnPublication" maxlength="6" pattern="\d{6}" placeholder="000" type="text" required style="flex: 3;">
+                        <span class="input-group-text">-</span>
+                        <input class="form-control text-center" id="IsbnCheckDigit" maxlength="1" pattern="\d{1}" placeholder="0" type="text" required style="flex: 1;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row gx-2 mt-2">
+                  <div class="col">
+                    <div class="ratio ratio-1x1">
+                      <img class="img-thumbnail object-fit-scale" id="cover">
+                    </div>
+                  </div>
+                  <div class="col col-lg-9">
+                    <div class="row">
+                      <div class="col">
+                        <div class="vstack gap-0">
+                          <input class="form-control form-control-sm rounded-2 rounded-bottom-0" id="title" placeholder="Title" type="text" required>
+                          <input class="form-control form-control-sm rounded-0" id="titleRuby" placeholder="Title Ruby" type="text" required>
+                          <input class="form-control form-control-sm rounded-2 rounded-top-0" id="subtitle" placeholder="Subtitle" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row gx-2 mt-2">
+                      <div class="col col-lg-3 col-md-6 col-sm-12 mt-sm-1">
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-text">Vol.</span>
+                          <input class="form-control text-center" id="volume" min="1" type="number" value="1" required>
+                        </div>
+                      </div>
+                      <div class="col col-lg-3 col-md-6 col-sm-12 mt-sm-1">
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-text">￥</span>
+                          <input class="form-control" id="price" min="1" placeholder="Price" type="number" required>
+                        </div>
+                      </div>
+                      <div class="col col-lg-3 col-md-6 col-sm-12 mt-md-1 mt-sm-1">
+                        <input class="form-control form-control-sm" id="publishedAt" type="date">
+                      </div>
+                      <div class="col col-lg-3 col-md-6 col-sm-12 mt-md-1 mt-sm-1">
+                        <select class="form-select form-select-sm">
+                          <option value="" selected>Select Format</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <div class="input-group input-group-sm">
+                          <input class="form-control" id="image" placeholder="https://example.com/image.jpg" type="text">
+                          <label class="btn btn-outline-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+                              <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7z"/>
+                            </svg>
+                            <input type="file" class="form-control d-none">
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <div class="card overflow-y-scroll">
+                          <ul class="list-group list-group-flush" style="height: 229px;">
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <div class="input-group flex-nowrap">
+                          <div class="vstack gap-0">
+                            <input class="form-control form-control-sm rounded-2 rounded-end-0 rounded-bottom-0" id="author" placeholder="author" type="text">
+                            <input class="form-control form-control-sm rounded-2 rounded-end-0 rounded-top-0" id="authorRuby" placeholder="author Ruby" type="text">
+                          </div>
+                          <button class="btn btn-outline-secondary" type="button" id="authorAdd">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="vr px-0"></div>
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="input-group flex-nowrap input-group-sm">
+                          <span class="input-group-text">C</span>
+                          <input class="form-control" id="CCode" maxlength="4" minlength="4" placeholder="0000" type="text" required>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <nav>
+                          <ol class="breadcrumb m-0" style="font-size: 0.75rem;">
+                            <li class="breadcrumb-item">Target</li>
+                            <li class="breadcrumb-item">Format</li>
+                            <li class="breadcrumb-item">Content</li>
+                          </ol>
+                        </nav>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <div class="vstack gap-0">
+                          <input class="form-control form-control-sm rounded-2 rounded-bottom-0" id="publisher" placeholder="Publisher" type="text" required>
+                          <input class="form-control form-control-sm rounded-2 rounded-top-0" id="publisherRuby" placeholder="Published Ruby" type="text" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <div class="vstack gap-0">
+                          <input class="form-control form-control-sm rounded-2 rounded-bottom-0" id="label" placeholder="Label" type="text">
+                          <input class="form-control form-control-sm rounded-2 rounded-top-0" id="labelRuby" placeholder="Label Ruby" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <div class="vstack gap-0">
+                          <input class="form-control form-control-sm rounded-2 rounded-bottom-0" id="series" placeholder="Series" type="text">
+                          <input class="form-control form-control-sm rounded-2 rounded-top-0" id="seriesRuby" placeholder="Series Ruby" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item flex-fill py-1">
+                            <div class="form-check form-check-inline m-0">
+                              <input class="form-check-input" id="standard" name="editionRadio" type="radio" value="" checked>
+                              <label class="form-check-label" for="standard">Standard</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item flex-fill py-1">
+                            <div class="form-check form-check-inline m-0">
+                              <input class="form-check-input" id="limited" name="editionRadio" type="radio" value="">
+                              <label class="form-check-label" for="limited">Limited</label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

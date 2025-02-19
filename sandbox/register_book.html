@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ja" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="modal d-block" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body font-monospace">
+            <div class="container-fluid">
+              <form method="post">
+                <div class="row justify-content-between">
+                  <label class="col-auto col-form-label-sm order-first" for="IsbnRegistrationGroup">ISBN</label>
+                  <div class="col-12 col-sm order-1 order-sm-0 mt-1 mt-sm-0">
+                    <div class="input-group flex-nowrap input-group-sm">
+                      <input class="form-control px-0 text-center" id="IsbnGs1" name="IsbnGs1" maxlength="3" minlength="3" pattern="\d{3}" placeholder="000" style="flex: 2;" type="text" value="978" required>
+                      <span class="input-group-text px-1">-</span>
+                      <input class="form-control px-0 text-center" id="IsbnRegistrationGroup" name="IsbnRegistrationGroup" maxlength="5" minlength="1" pattern="\d{1,5}" placeholder="000" style="flex: 3;" type="text" required>
+                      <span class="input-group-text px-1">-</span>
+                      <input class="form-control px-0 text-center" id="IsbnRegistrant" name="IsbnPublication" maxlength="7" minlength="1" pattern="\d{1,7}" placeholder="000" style="flex: 3;" type="text" required>
+                      <span class="input-group-text px-1">-</span>
+                      <input class="form-control px-0 text-center" id="IsbnPublication" name="IsbnPublication" maxlength="6" minlength="1" pattern="\d{1,6}" placeholder="000" style="flex: 3;" type="text" required>
+                      <span class="input-group-text px-1">-</span>
+                      <input class="form-control px-0 text-center" id="IsbnCheckDigit" name="IsbnCheckDigit" maxlength="1" minlength="1" pattern="\d{1}" placeholder="0" style="flex: 1;" type="text" required>
+                    </div>
+                  </div>
+                  <button class="col-auto btn btn-outline-secondary btn-sm me-2 me-sm-0 order-0 order-sm-1" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="row mt-2 g-2">
+                  <div class="col-12 col-sm align-self-center">
+                    <div class="row">
+                      <div class="col">
+                        <div class="ratio ratio-1x1">
+                          <img class="img-thumbnail object-fit-scale rounded-bottom-0" id="cover" alt="Cover">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="input-group flex-nowrap input-group-sm">
+                          <input class="form-control rounded-top-0" id="coverInput" name="coverInput" placeholder="Cover Source" type="text" required>
+                          <label class="btn btn-outline-secondary btn-sm rounded-top-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+                              <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7z"/>
+                            </svg>
+                            <input class="d-none" id="coverFile" name="coverFile" accept="image/*" type="file">
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col col-lg-9 col-sm-7">
+                    <div class="row">
+                      <label class="col-auto col-form-label-sm" for="title">Title</label>
+                      <div class="col vstack gap-0">
+                        <input class="form-control form-control-sm rounded-2 rounded-bottom-0" id="title" name="title" placeholder="Title" type="text" required>
+                        <input class="form-control form-control-sm rounded-0" id="titleRuby" name="titleRuby" placeholder="Title Ruby" type="text" required>
+                        <input class="form-control form-control-sm rounded-2 rounded-top-0" id="subtitle" name="subtitle" placeholder="Subtitle" type="text">
+                      </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-sm-2 mt-2 g-1">
+                      <div class="col">
+                        <div class="input-group flex-nowrap input-group-sm">
+                          <span class="input-group-text">Volume</span>
+                          <input class="form-control text-end" id="volume" name="volume" min="1" type="number" value="1" required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group flex-nowrap input-group-sm">
+                          <span class="input-group-text">Price</span>
+                          <input class="form-control text-end" id="price" name="price" min="0" type="number" required>
+                        </div>
+                      </div>
+                      <div class="col col-lg col-sm-12">
+                        <div class="input-group flex-nowrap input-group-sm">
+                          <span class="input-group-text">Published At</span>
+                          <input class="form-control text-center" id="publishedAt" name="publishedAt" type="date" required>
+                        </div>
+                      </div>
+                      <div class="col col-lg col-sm-12">
+                        <div class="input-group flex-nowrap input-group-sm">
+                          <span class="input-group-text">Format</span>
+                          <select class="form-select" id="format" name="format" required>
+                            <option value="" selected>Select Format</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col col-lg col-sm-12">
+                    <div class="row">
+                      <div class="col"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col"></div>
+                    </div>
+                  </div>
+                  <div class="col-auto d-lg-block d-none">
+                    <div class="d-flex">
+                      <div class="vr"></div>
+                    </div>
+                  </div>
+                  <div class="col col-lg col-sm-12">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

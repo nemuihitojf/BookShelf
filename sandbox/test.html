@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Input with Preview</title>
+    <script>
+        function updateInputFromFile(fileInput) {
+            const textInput = document.getElementById('imageInput');
+            const preview = document.getElementById('imagePreview');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                textInput.value = file.name;
+
+                // プレビュー更新
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updatePreviewFromText() {
+            const textInput = document.getElementById('imageInput');
+            const preview = document.getElementById('imagePreview');
+            const url = textInput.value;
+
+            // URLを画像としてプレビュー
+            if (url) {
+                preview.src = url;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Choose an Image</h1>
+    <form>
+        <!-- Text field for URL or file path -->
+        <input 
+            type="text" 
+            id="imageInput" 
+            name="imageInput" 
+            placeholder="Enter image URL or choose a file..." 
+            style="width: 300px;" 
+            oninput="updatePreviewFromText()"
+        >
+
+        <!-- File selection button -->
+        <input 
+            type="file" 
+            id="fileChooser" 
+            name="imageFile" 
+            accept="image/*" 
+            style="display: none;" 
+            onchange="updateInputFromFile(this)"
+        >
+
+        <!-- Custom "Choose File" button -->
+        <button 
+            type="button" 
+            onclick="document.getElementById('fileChooser').click()"
+        >
+            Choose File
+        </button>
+
+        <!-- Image Preview -->
+        <div style="margin-top: 20px;">
+            <img 
+                id="imagePreview" 
+                src="" 
+                alt="Image Preview" 
+                style="max-width: 100%; max-height: 300px; display: none; border: 1px solid #ddd; padding: 5px;"
+            >
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" style="margin-top: 10px;">Submit</button>
+    </form>
+</body>
+</html>
